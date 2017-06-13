@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- 7
+cache:
+  directories:
+  - node_modules
+  - $(npm config get prefix)/bin/gulp
+  - /home/travis/.nvm/versions/node/v7.2.0/lib/node_modules
+  - /home/travis/.local/bin
+branches:
+  except:
+  - master
+install:
+- npm install -g gulp
+- npm install
+- npm update
+script:
+- chmod a+x deploy.sh
+- ./deploy.sh

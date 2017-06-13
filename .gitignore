@@ -1,0 +1,6 @@
+.DS_Store
+/deploy_key
+/deploy_key.pub
+node_modules
+
+/dist
