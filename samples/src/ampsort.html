@@ -1,0 +1,198 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="canonical" href="ampsort.html" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <meta name="amp-experiments-opt-in" content="amp-sort">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <style amp-custom>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Roboto", sans-serif;
+      line-height: 1.5rem;
+      letter-spacing: normal;
+      text-size-adjust: 100%;
+    }
+    amp-sort {
+      padding: 1px; 
+    }
+    th:focus,
+    th:hover,
+    button:focus,
+    button:hover {
+      cursor: pointer;
+      position: relative;
+      outline: 0;
+    }
+    th:focus::before,
+    th:hover::before,
+    button:focus::before,
+    button:hover::before {
+      content: '';
+      position: absolute;
+      border-color: black;
+      top: 0; right: 0; bottom: 0; left: 0;
+      outline: solid 2px rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    /* Begin basic list styles */
+    button {
+      background-color: #efefef;
+      border: solid 1px #999;
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: 14px;
+      line-height: 1.125rem;
+      text-decoration: none;
+      white-space: nowrap;
+      word-wrap: normal;
+      vertical-align: middle;
+      cursor: pointer;
+      color: inherit;
+      padding: .25rem .5rem;
+      text-transform: uppercase;
+      -webkit-appearance: button;
+      min-height: 48px;
+      min-width: 48px;
+    }
+    /* Begin basic table styles */
+    table,
+    thead,
+    tbody {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    table {
+      border-top: solid 1px #999;
+      border-bottom: none;
+      max-width: 700px;
+    }
+    th {
+      text-align: center;
+      user-select: none;
+      -webkit-user-select: none;  /* Chrome all / Safari all */
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      user-select: none;          /* Likely future */ 
+    }
+    tr {
+      border-bottom: solid 1px #999;
+    }
+    thead th {
+      user-select: none;
+    }
+    tr {
+      width: 100%;
+      display: flex;
+      flex: 1 1 auto;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: stretch;
+      flex-direction: row;
+    }
+    th,
+    td {
+      display: flex;
+      flex: 1 1 0;
+      justify-content: center;
+      align-items: center;
+      border-collapse: collapse;
+      border-left: solid 1px #999;
+      padding: .3em;
+    }
+    th:last-child,
+    td:last-child {
+      border-right: solid 1px #999;
+    }
+/*    .priceCol:focus,
+    .priceCol:hover {
+      cursor: pointer;
+      position: relative;
+      outline: 0;
+    }
+    .priceCol:focus::before,
+    .priceCol:hover::before {
+      content: '';
+      position: absolute;
+      border-color: black;
+      top: 0; right: 0; bottom: 0; left: 0;
+      outline: solid 2px rgba(0,0,0,0.5);
+      z-index: 1;
+    }*/
+    th:focus + th,
+    th:hover + th {
+      border-left-color: black;
+    }
+    /**
+     * Minimum size to conform to PageSpeed Insights rule "Size Tap Targets
+     * Appropriately".
+     * See:
+     * https://developers.google.com/speed/docs/insights/SizeTapTargetsAppropriately
+     */
+    th {
+      min-height: 48px;
+      min-width: 48px;
+      background-color: #efefef;
+    }
+    .priceCol::after {
+      content: "";
+      display: block;
+      height: 9px;
+      width: 21px;
+      background-size: 21px 9px;
+      background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2021%209%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M14.5%205l-4%204-4-4zM14.5%204l-4-4-4%204z%22%2F%3E%3C%2Fsvg%3E');
+      background-repeat: no-repeat;
+      background-position: center;
+      float: right; 
+    }
+    /*
+     * amp-sort automatically adds sorted-by sorted-direction attributes to the
+     * component after each sort operation so CSS can target them.
+     */
+    amp-sort[sorted-by='data-price'][sorted-direction='asc'] .priceCol::after {
+      background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2021%204%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M6.5%204l4-4%204%204z%22%2F%3E%3C%2Fsvg%3E');
+      background-size: 21px 4px;
+    }
+    amp-sort[sorted-by='data-price'][sorted-direction='desc'] .priceCol::after {
+      background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2021%204%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M14.5%200l-4%204-4-4z%22%2F%3E%3C%2Fsvg%3E');
+      background-size: 21px 4px;
+    }
+  </style>
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async custom-element="amp-sort" src="https://derekcecillewis.github.io/amphtml/v0/amp-sort-0.1.js"></script>
+  <script async src="https://derekcecillewis.github.io/amphtml/v0.js"></script>
+</head>
+<body>
+  <!-- basic list -->
+  <amp-sort id="priceSorter" sort-by="data-price" sort-direction="desc"  value-type="number">
+    <button on="tap:priceSorter.sort();">Sort by price: highest first</button>
+    <ul>
+      <li data-price="20">Green Hoodie - $20</li>
+      <li data-price="30">Red Shirt - $30</li>
+      <li data-price="10">Blue T-Shirt - $10</li>
+      <li data-price="17.5">White T-Shirt - $17.50</li>
+    </ul>
+  </amp-sort>
+  <!-- basic table -->
+  <amp-sort id="tableSorter" value-type='number' sorted sort-direction="toggle" sorted-by="data-price" sorted-direction="asc">
+    <table>
+      <thead>
+        <th role="rowheader" on="tap:tableSorter.sort(sortBy='data-price', sortDirecion='toggle')" tabindex="0"  aria-sort="ascending" class="priceCol">Price</th>
+      </thead>
+      <tbody>
+        <tr data-price="25"><td role="gridcell">$25</td></tr>
+        <tr data-price="50"><td role="gridcell">$50</td></tr>
+        <tr data-price="75"><td role="gridcell">$75</td></tr>
+        <tr data-price="100"><td role="gridcell">$100</td></tr>
+      </tbody>
+    </table>
+  </amp-sort>
+</body>
+</html>
