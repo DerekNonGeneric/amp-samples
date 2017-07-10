@@ -15,3 +15,15 @@ gulp.task('dist', function() {
   gulp.src('samples/src/images/*')
     .pipe(gulp.dest(`./${config.destDir}/${config.repoName}/samples/images/`));
 });
+
+gulp.task('lint-css', function lintCssTask() {
+  const gulpStylelint = require('gulp-stylelint');
+
+  return gulp
+    .src('samples/src/**/*.css')
+    .pipe(gulpStylelint({
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
+    }));
+});
