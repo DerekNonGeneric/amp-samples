@@ -2,6 +2,8 @@
 
 Boilerplate for adding embedded samples in AMP docs. Based on [How to: Include embedded samples in AMP docs](https://github.com/ampproject/docs/blob/master/contributing/adding-embedded-samples-in-docs.md) by [Barb Paduch](https://github.com/bpaduch).
 
+**WARNING:** A new method exists. Update coming soon!
+
 ## Features
 
 - Auto-deploys built products to gh-pages with Travis
