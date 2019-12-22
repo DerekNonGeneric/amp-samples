@@ -4,8 +4,8 @@ Boilerplate for adding embedded samples in AMP docs. Based on [How to: Include e
 
 ## Live samples
 
-- [amp-sort basic list](https://derekcecillewis.github.io/amp-samples/samples/ampsort.basic-list.preview.html)
-- [amp-sort basic table](https://derekcecillewis.github.io/amp-samples/samples/ampsort.basic-table.preview.html)
+- [amp-sort basic list](https://DerekNonGeneric.github.io/amp-samples/samples/ampsort.basic-list.preview.html)
+- [amp-sort basic table](https://DerekNonGeneric.github.io/amp-samples/samples/ampsort.basic-table.preview.html)
 
 ## Features
 
