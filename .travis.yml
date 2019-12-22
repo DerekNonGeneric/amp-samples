@@ -10,6 +10,7 @@ cache:
 branches:
   except:
   - master
+before_install: openssl aes-256-cbc -K $encrypted_be6f45ab858f_key -iv $encrypted_be6f45ab858f_iv -in deploy_key.enc -out deploy_key -d
 install:
 - npm install -g gulp
 - npm install
