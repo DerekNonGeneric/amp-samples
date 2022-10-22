@@ -1,7 +1,7 @@
 {
   "name": "amp-samples",
   "dependencies": {
-  	"amp-by-example": "0.1.5",
+  	"amp-by-example": "0.2.16",
     "gulp": "4.0.2"
   }
 }
